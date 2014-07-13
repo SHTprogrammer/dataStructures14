@@ -2,3 +2,5 @@
 .metadata/
 *.prefs
 bin/
+*.classpath
+*.project

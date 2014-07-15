@@ -1,7 +1,7 @@
 ### Tracking Time Spent on Homework
 
 
-Week 1:
+####Week 1:
 
   Read Chapter 1: 1 hour
   
@@ -17,4 +17,4 @@ Week 1:
   
   Do time-test problem: 2 hours
   
-Total time: 11.5 hrs
+####Total time: 11.5 hrs

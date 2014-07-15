@@ -124,7 +124,20 @@ rates.
 >>> by hand, the running time to do the following:
 >>> a. Add two N-digit integers.
 
+Given case, adding d and e:
 
+d = 9999
+e = 99
+
+* Add digits d.last, e.last
+* Carry 1
+* Add digits d.last-1, e.last-1,1
+* Carry 1
+* Add 1 and d.last - 2
+
+Perform operations for (d.length - e.length) + carry term
+
+Operation is O(n) 
 
 
 >>>5. Weiss, Exercise 2.11

@@ -1,4 +1,7 @@
-/* Binary search algorithm implemented recursively, assumes input
+/* Monica Quaintance mjq2102@columbia.edu
+ * Data Structures in Java
+ * 
+ * Binary search algorithm implemented recursively, assumes input
  * array a is sorted, returns index of target item or -1 if not found
  */
 

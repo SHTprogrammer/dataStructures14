@@ -1,3 +1,11 @@
+/* Monica Quaintance mjq2102@columbia.edu
+ * Data Structures in Java
+ * 
+ * Tests recursive binary search on arrays of different sizes 
+ * and different targets
+ */
+
+
 class Problem2
 {
 	public static void main( String[] args)

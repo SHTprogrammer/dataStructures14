@@ -1,3 +1,11 @@
+/* Monica Quaintance mjq2102@columbia.edu
+ * Data Structures in Java
+ * 
+ * Tests implementation of FindMax using Area and Perim Comparators
+ * on Rectangle object
+ */
+
+
 import java.util.Comparator;
 
 class Problem1

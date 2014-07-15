@@ -1,6 +1,10 @@
-// compares two Rectangle based on their areas and returns a negative integer,
-// zero, or a positive integer as the first is less than, equal to, or greater
-// than the second 
+/* Monica Quaintance mjq2102@columbia.edu
+ * Data Structures in Java
+ * 
+ * compares two Rectangle based on their areas and returns a negative integer,
+ * zero, or a positive integer as the first is less than, equal to, or greater
+ * than the second
+ */  
 
 import java.util.Comparator;
 

@@ -5,7 +5,7 @@ mjq2102@columbia.edu
 
 
 
-1. Weiss, Exercise 2.1
+>>>1. Weiss, Exercise 2.1
 >>>Order the following functions by growth rate: N, √N, N^1.5, N^2, NlogN,
 >>> Nloglog N, N log^2 N, N log(N2), 2/N, 2^N, 2^(N/2), 37, N^2 log N, N^3.
 >>> Indicate which functions grow at the same rate.
@@ -16,7 +16,7 @@ N^3, 2^(N/2), 2^N.
 growth(Nlog(N^2)) = growth(NlogN)
 
 
-2. Weiss, Exercise 2.6
+>>>2. Weiss, Exercise 2.6
 >>>In a recent court case, a judge cited a city for contempt and ordered a
 >>> fine of $2 for the first day. Each subsequent day, until the city 
 >>>followed the judge’s order, the fine was squared (that is, the fine 
@@ -33,9 +33,9 @@ N = log(D)
 log(D) days
 
 
-3. Weiss, Exercise 2.7 - note that part b of this problem is actually 
-  part of the programming assignment. Place your answers to part a, 
-  and part c in the written solutions.
+>>>3. Weiss, Exercise 2.7 - note that part b of this problem is actually 
+>>>part of the programming assignment. Place your answers to part a, 
+>>>and part c in the written solutions.
 
 >>> For each of the following six program fragments:
 >>> a. Give an analysis of the running time (Big-Oh will do).
@@ -91,7 +91,7 @@ drastically compared to the others, which mirrors their abysmal growth
 rates.
 
 
-4. Weiss, Exercise 2.10 (part a)
+>>>4. Weiss, Exercise 2.10 (part a)
 >>> Determine, for the typical algorithms that you use to perform calculations
 >>> by hand, the running time to do the following:
 >>> a. Add two N-digit integers.
@@ -99,7 +99,7 @@ rates.
 
 
 
-5. Weiss, Exercise 2.11
+>>>5. Weiss, Exercise 2.11
 
 >>> An algorithm takes 0.5 ms for input size 100. How long will it take 
 >>> for input size 500 if the running time is the following (assume low-order
@@ -121,7 +121,7 @@ T/0.5 = 500^2/100^2, T = 12.5
 T/0.5 = 500^3/100^3, T = 62.5
 
 
-6. Weiss, Exercise 2.15 
+>>>6. Weiss, Exercise 2.15 
 >>> Give an efficient algorithm to determine if there exists an integer
 >>> i such that Ai = i in an array of integers A1 < A2 < A3 <···< AN.
 >>> What is the running time of your algorithm?

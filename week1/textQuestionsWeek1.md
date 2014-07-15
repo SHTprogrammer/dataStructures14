@@ -42,18 +42,23 @@ log(D) days
 >>> For each of the following six program fragments:
 >>> a. Give an analysis of the running time (Big-Oh will do).
 
-(1) O(N)
-(2) O(N) * O(N) = O(N^2)
-(3) O(N) * O(N^2) = O(N^3)
-(4) O(N) * O(N) = O(N^2)
-(5) O(N) * O(N^2) * O(N^2) = O(N^5)
-(6) O(N) * O(N^2) * O(N) = O(N^4)
+1. O(N)
+
+2. O(N) * O(N) = O(N^2)
+
+3. O(N) * O(N^2) = O(N^3)
+
+4. O(N) * O(N) = O(N^2)
+
+5. O(N) * O(N^2) * O(N^2) = O(N^5)
+
+6. O(N) * O(N^2) * O(N) = O(N^4)
 
 
 >>> b. Implement the code in Java, and give the running time for several 
 >>> values of N. 
 
-(1) N = 500, time is 0.0
+1. N = 500, time is 0.0
 
   N = 1000, time is 0.0
 
@@ -62,33 +67,49 @@ log(D) days
   N = 10000, time is 0.0
 
 
-(2) N = 500, time is 0.003
+2. N = 500, time is 0.003
+
   N = 1000, time is 0.0
+
   N = 5000, time is 0.0
+
   N = 10000, time is 0.001
 
-(3) N = 500, time is 0.004
+3. N = 500, time is 0.004
+
   N = 1000, time is 0.0
+
   N = 5000, time is 0.0
+
   N = 10000, time is 0.0
 
-(4) N = 500, time is 0.004
+4. N = 500, time is 0.004
+
   N = 1000, time is 0.0
+
   N = 5000, time is 0.0
+
   N = 10000, time is 0.0
 
-(5) N = 500, time is 0.115
+5. N = 500, time is 0.115
+
   N = 1000, time is 0.932
+
   N = 5000, time is 31.282
+
   N = 10000, time is 235.27
 
-(6) N = 500, time is 0.135
+6. N = 500, time is 0.135
+
   N = 1000, time is 1.05
+
   N = 5000, time is 135.148
+
   N = 10000, time is 1090.551
 
 
 >>>c. Compare your analysis with the actual running times.
+
 Everything below N^4 runs too quickly to judge. I would expect 5 to be slower 
 than 6, but my computer could have been trying to run something else at 
 the same time which is why I got odd results. In a real test situation 
@@ -113,7 +134,7 @@ rates.
 >>> terms are negligible): 
 >>> a. linear
 
-T/0.5 = 500/100, T = 
+T/0.5 = 500/100, T = 2.5
 
 >>> b. O(NlogN)
 

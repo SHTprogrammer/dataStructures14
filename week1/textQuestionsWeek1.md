@@ -6,6 +6,7 @@ mjq2102@columbia.edu
 
 
 >>>1. Weiss, Exercise 2.1
+
 >>>Order the following functions by growth rate: N, √N, N^1.5, N^2, NlogN,
 >>> Nloglog N, N log^2 N, N log(N2), 2/N, 2^N, 2^(N/2), 37, N^2 log N, N^3.
 >>> Indicate which functions grow at the same rate.
@@ -17,6 +18,7 @@ growth(Nlog(N^2)) = growth(NlogN)
 
 
 >>>2. Weiss, Exercise 2.6
+
 >>>In a recent court case, a judge cited a city for contempt and ordered a
 >>> fine of $2 for the first day. Each subsequent day, until the city 
 >>>followed the judge’s order, the fine was squared (that is, the fine 
@@ -52,9 +54,13 @@ log(D) days
 >>> values of N. 
 
 (1) N = 500, time is 0.0
+
   N = 1000, time is 0.0
+
   N = 5000, time is 0.0
+
   N = 10000, time is 0.0
+
 
 (2) N = 500, time is 0.003
   N = 1000, time is 0.0
@@ -92,6 +98,7 @@ rates.
 
 
 >>>4. Weiss, Exercise 2.10 (part a)
+
 >>> Determine, for the typical algorithms that you use to perform calculations
 >>> by hand, the running time to do the following:
 >>> a. Add two N-digit integers.
@@ -122,6 +129,7 @@ T/0.5 = 500^3/100^3, T = 62.5
 
 
 >>>6. Weiss, Exercise 2.15 
+
 >>> Give an efficient algorithm to determine if there exists an integer
 >>> i such that Ai = i in an array of integers A1 < A2 < A3 <···< AN.
 >>> What is the running time of your algorithm?

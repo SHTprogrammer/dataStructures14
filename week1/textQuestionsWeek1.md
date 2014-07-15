@@ -1,6 +1,7 @@
 
 ### Homework Week 1 Text Questions
 Monica Quaintance
+mjq2102@columbia.edu
 
 
 
@@ -39,12 +40,12 @@ log(D) days
 >>> For each of the following six program fragments:
 >>> a. Give an analysis of the running time (Big-Oh will do).
 
-(1) N
-(2) 
-(3)
-(4)
-(5)
-(6)
+(1) O(N)
+(2) O(N) * O(N) = O(N^2)
+(3) O(N) * O(N^2) = O(N^3)
+(4) O(N) * O(N) = O(N^2)
+(5) O(N) * O(N^2) * O(N^2) = O(N^5)
+(6) O(N) * O(N^2) * O(N) = O(N^4)
 
 
 >>> b. Implement the code in Java, and give the running time for several 
@@ -82,7 +83,12 @@ log(D) days
 
 
 >>>c. Compare your analysis with the actual running times.
-
+Everything below N^4 runs too quickly to judge. I would expect 5 to be slower 
+than 6, but my computer could have been trying to run something else at 
+the same time which is why I got odd results. In a real test situation 
+I would use a dedicated machine. 5 and 6 did underperform quite 
+drastically compared to the others, which mirrors their abysmal growth
+rates.
 
 
 4. Weiss, Exercise 2.10 (part a)
@@ -100,16 +106,19 @@ log(D) days
 >>> terms are negligible): 
 >>> a. linear
 
+T/0.5 = 500/100, T = 
 
 >>> b. O(NlogN)
 
-
+T/0.5 = 500log(500)/100log(100), T = 3.374
 
 >>> c. quadratic 
 
+T/0.5 = 500^2/100^2, T = 12.5
 
 >>> d. cubic
 
+T/0.5 = 500^3/100^3, T = 62.5
 
 
 6. Weiss, Exercise 2.15 
@@ -117,5 +126,33 @@ log(D) days
 >>> i such that Ai = i in an array of integers A1 < A2 < A3 <···< AN.
 >>> What is the running time of your algorithm?
 
+Since A(N-1) < A(N), A(N) cannot be a duplicate of A(N). The series of A cannot decrease or be constant, it can only increase. The increase of the index is always perfectly linear (i++), while the slowest that the terms of the array can increase is also perfectly linear. Therefore, for all A(i), either A(i) > i or A(i) = i. 
 
+Also, it follows that if A(N-1) > (N-1), then A(N) > N. A(N) cannot decrease or be = A(N-1), so A(N) >= A(N-1) + 1; Since (N-1) + 1 = N, (A(N-1)+1)/((N-1)+1) <= A(N) / N . By the reverse, if A(N) < N, then A(N-1) < (N-1) as well.
+
+Therefore, if we find a number that is bigger than its index, no terms following that term can be a success, and if we find a number smaller than its index no terms preceeding that term can be a success.
+
+We can use an implementation like binary search for this--check the first element, if it is greater than its index then quit, otherwise check the middle of the array. If it is less than its index, check the right side of the array, if it is greater, the left. Continue until you have found a success or have run out of array.
+
+The runtime for this algorithm is O(logN).
+
+    left = 0, right = a.length
+
+    if (a[0] > 1)
+        return -1;
+
+    while( left <= right ) {
+
+        int mid = (left + right)/2;
+
+        if a[mid] = mid + 1
+            return (mid+1);
+
+        else if (a[mid] > (mid+1))
+            right = mid - 1;
+
+        else (a[mid] < (mid+1))
+            left = mid + 1;
+      }
+      return -1;
 

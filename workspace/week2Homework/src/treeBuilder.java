@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class treeBuilder
 {
-	Stack<ExpressionTree> postfix = new Stack<ExpressionTree>();
+	Stack<ExpressionTree> expStack = new Stack<ExpressionTree>();
 	String[] operations = {"+","-","*","/"};
 
 	public treeBuilder(){
@@ -16,7 +16,7 @@ public class treeBuilder
 		ExpressionTree operand0;
 		ExpressionTree operand1;
 		
-//		for all elements in the postfix expressions
+//		for all elements in the postfix expression
 	    for (int i=0; i < p.length(); i++)
 	    {
 	    	nextItem = p.charAt(i); 
@@ -24,17 +24,17 @@ public class treeBuilder
 //	    	if the element is in the operations list, pop two trees and make a new tree
 	    	if ( Arrays.asList(operations).contains(nextItem) )
 	    	{
-	    		operand1 = postfix.pop();
-	    	    operand0 = postfix.pop();
-	    	    postfix.push(new ExpressionTree(nextItem,operand0,operand1));
+	    		operand1 = expStack.pop();
+	    	    operand0 = expStack.pop();
+	    	    expStack.push(new ExpressionTree(nextItem,operand0,operand1));
 	    	}
 	    	
 //	    	else, must be either a variable or a number, so put in an expression tree 
 //	    	and push onto stack
 	    	else
-	    	    postfix.push(new ExpressionTree(nextItem,null,null));
+	    	    expStack.push(new ExpressionTree(nextItem,null,null));
 	    }	
 		
-		return postfix.pop();
+		return expStack.pop();
 	}
 }

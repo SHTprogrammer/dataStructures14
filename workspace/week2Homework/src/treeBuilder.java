@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class treeBuilder
 {
-	Stack<ExpressionTree> expStack = new Stack<ExpressionTree>();
+	MyStack<ExpressionTree> expStack = new MyStack<ExpressionTree>();
 	String[] operations = {"+","-","*","/"};
 
 	public treeBuilder(){

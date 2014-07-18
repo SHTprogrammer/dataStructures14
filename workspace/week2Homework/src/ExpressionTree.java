@@ -49,13 +49,19 @@ public class ExpressionTree {
 	
 	
     /*	
-    * Traverses tree and returns prefix expression equivalent to the ExpressionTree
+    * Traverses tree and returns prefix expression equivalent to the ExpressionTree.
+    * Returns string.
     */	
-	public LinkedList<Object> prefixPrint()
+	public String prefixPrint()
 	{	
 		LinkedList<Object> prefix = new LinkedList<Object>();
 		prePrintRecurse(prefix);
-		return prefix;
+		StringBuilder prefixOut = new StringBuilder(prefix.size());
+		
+		for (int i = 0; i < prefix.size(); i++)
+			prefixOut.append(prefix.get(i));	
+		
+		return prefixOut.toString();
 	}
 
 	/*	
@@ -67,21 +73,30 @@ public class ExpressionTree {
 	{
 		elements.add(element);
 		if (left != null)
-			left.prePrintRecurse(elements);
-		
+			left.prePrintRecurse(elements);	
 		if (right != null)
-		    right.prePrintRecurse(elements);
-		
+		    right.prePrintRecurse(elements);		
 		return elements;
 	}
 	
-	public LinkedList<Object> infixPrint()
+	public String infixPrint()
 	{
 		LinkedList<Object> infix = new LinkedList<Object>();
 		inPrintRecurse(infix);
-		return infix;
+		StringBuilder infixOut = new StringBuilder(infix.size());
+		
+		for (int i = 0; i < infix.size(); i++)
+			infixOut.append(infix.get(i));
+		
+		return infixOut.toString();
 	}
 	
+	
+	/*
+	 * Traverses tree and returns infix expression equivalent to the ExpressionTree.	
+	 * Inner method, takes in an empty linked list and passes the results back through
+	 * that list via recursion
+	 */
 	private LinkedList<Object> inPrintRecurse(LinkedList<Object> elements)
 	{
 		if (element != null)
@@ -101,20 +116,10 @@ public class ExpressionTree {
 				left.inPrintRecurse(elements);
 				elements.add(element);
 			    right.inPrintRecurse(elements);
-
 			}
 		}
 		return elements;
 	}
 	
-//	public String stringBuilder(LinkedList<Object> llist)
-//	{
-//		String newString = new String();
-//		for (int i = 0; i < llist.size(); i++)
-//		{
-//			newString.concat(llist.get(i).toString());
-//		}
-//		return newString;
-//	}
 	
 }

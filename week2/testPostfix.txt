@@ -1,0 +1,18 @@
+postfix expression for testing:
+ab+cde+**
+
+         *
+        /  \
+      +      *
+     / \    / \
+    a   b  c   +
+               / \
+              d   e
+
+prefix: *,+,a,b,*,c,+,d,e
+infix: (a+b) * c * (d+e)
+
+with numbers:
+12+345+**
+
+(1+2) * 3 * (4+5) = 3*3*9 = 81

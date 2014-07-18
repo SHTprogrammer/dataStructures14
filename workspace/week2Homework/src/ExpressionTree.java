@@ -8,6 +8,10 @@ public class ExpressionTree {
 	public ExpressionTree left;
 	public ExpressionTree right;
 	
+    /*
+    * Expression tree constructor, takes in node element and references to left
+    * and right expression trees (if leaf node, takes null)
+    */
 	public ExpressionTree(Object e, ExpressionTree lET, ExpressionTree rET)
 	{
 		element = e;
@@ -16,30 +20,37 @@ public class ExpressionTree {
 		else 
 			isOperator = true;
 		left = lET;
-		right = rET;
-		
+		right = rET;	
 	}
 	
-	
+	/*	
+	* returns node element
+	*/	
 	public Object returnElement()
 	{
 		return element;
 	}
-	
+
+	/*	
+	* returns left pointer
+	*/
 	public ExpressionTree returnLeft()
 	{
 		return left;
 	}
 	
+	/*	
+	* returns right pointer
+	*/
 	public ExpressionTree returnRight()
 	{
 		return right;
 	}
 	
 	
-/*	
-*	Traverses tree and returns prefix expression equivalent to the ExpressionTree
-*/	
+    /*	
+    * Traverses tree and returns prefix expression equivalent to the ExpressionTree
+    */	
 	public LinkedList<Object> prefixPrint()
 	{	
 		LinkedList<Object> prefix = new LinkedList<Object>();
@@ -47,6 +58,11 @@ public class ExpressionTree {
 		return prefix;
 	}
 
+	/*	
+	* Traverses tree and returns prefix expression equivalent to the ExpressionTree	
+	* Inner method, takes in an empty linked list and passes the results back through
+	* that list via recursion
+	*/	
 	private LinkedList<Object> prePrintRecurse(LinkedList<Object> elements)
 	{
 		elements.add(element);
@@ -58,5 +74,47 @@ public class ExpressionTree {
 		
 		return elements;
 	}
+	
+	public LinkedList<Object> infixPrint()
+	{
+		LinkedList<Object> infix = new LinkedList<Object>();
+		inPrintRecurse(infix);
+		return infix;
+	}
+	
+	private LinkedList<Object> inPrintRecurse(LinkedList<Object> elements)
+	{
+		if (element != null)
+		{
+			if (left == null || right == null)
+			    elements.add(element);
+			else if (element.equals("+") || element.equals("-"))
+			{
+				elements.add("(");
+			    left.inPrintRecurse(elements);
+			    elements.add(element);
+			    right.inPrintRecurse(elements);
+			    elements.add(")");
+			}
+			else if(left != null && right != null)
+			{
+				left.inPrintRecurse(elements);
+				elements.add(element);
+			    right.inPrintRecurse(elements);
+
+			}
+		}
+		return elements;
+	}
+	
+//	public String stringBuilder(LinkedList<Object> llist)
+//	{
+//		String newString = new String();
+//		for (int i = 0; i < llist.size(); i++)
+//		{
+//			newString.concat(llist.get(i).toString());
+//		}
+//		return newString;
+//	}
 	
 }

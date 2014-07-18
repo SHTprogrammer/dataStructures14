@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 
 public class ExpressionTree {
 
@@ -24,16 +26,37 @@ public class ExpressionTree {
 		return element;
 	}
 	
-	
 	public ExpressionTree returnLeft()
 	{
 		return left;
 	}
 	
-	
 	public ExpressionTree returnRight()
 	{
 		return right;
+	}
+	
+	
+/*	
+*	Traverses tree and returns prefix expression equivalent to the ExpressionTree
+*/	
+	public LinkedList<Object> prefixPrint()
+	{	
+		LinkedList<Object> prefix = new LinkedList<Object>();
+		prePrintRecurse(prefix);
+		return prefix;
+	}
+
+	private LinkedList<Object> prePrintRecurse(LinkedList<Object> elements)
+	{
+		elements.add(element);
+		if (left != null)
+			left.prePrintRecurse(elements);
+		
+		if (right != null)
+		    right.prePrintRecurse(elements);
+		
+		return elements;
 	}
 	
 }

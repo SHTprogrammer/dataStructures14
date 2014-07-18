@@ -1,7 +1,7 @@
-import java.util.LinkedList;
-
-import java.util.Arrays;
-import java.util.Stack;
+//import java.util.LinkedList;
+//
+//import java.util.Arrays;
+//import java.util.Stack;
 //import java.util.LinkedList;
 
 public class treeTest
@@ -19,34 +19,24 @@ public class treeTest
 	
 		String pInput = "ab+cde+**";
 		String[] arrayInput = pInput.split("(?!^)");
-		String numInput = "12+345**";
+		String numInput = "12+345+**";
+		String[] numArrayInput = numInput.split("(?!^)");
+	    System.out.println(numArrayInput.toString()); 
 
 	    
 	    treeBuilder builderNew = new treeBuilder();
-	    ExpressionTree treeNew = builderNew.build("21/");
-	    System.out.println(treeNew);
+	    ExpressionTree treeNew = builderNew.build(arrayInput);
 	    
-	    System.out.println(treeNew.prefixPrint());    
-	    System.out.println(tree2.prefixPrint());
-	    
-	   
-	  String[] operations = {"+","-","*","/"};
-	  
-//	  Stack<ExpressionTree> postfix = new Stack<ExpressionTree>();
-	  Object nextItem;
-	  for (int i=0; i < arrayInput.length; i++)
-	  {
-		  nextItem = arrayInput[i];
-		  
-		  if ( Arrays.asList(operations).contains(nextItem) )
-			  System.out.println(nextItem+"operator");
-		  else
-			  System.out.println(nextItem);
-	  }
-	  
-	  
-//	  postfix.push(new ExpressionTree(nextItem,null,null)); 
-//	  System.out.println(postfix.pop());
+	    ExpressionTree treeNum = builderNew.build(numArrayInput);
 
+	    System.out.println(tree2.prefixPrint());
+	    System.out.println(treeNew.prefixPrint()); 
+	    System.out.println(treeNum.prefixPrint()); 
+
+	    System.out.println(tree2.infixPrint());
+	    System.out.println(treeNew.infixPrint()); 
+	    
 	}
+	
+
 }

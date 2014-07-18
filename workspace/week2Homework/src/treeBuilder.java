@@ -10,16 +10,16 @@ public class treeBuilder
 	public treeBuilder(){
 	}
 	
-	public ExpressionTree build(String p)
+	public ExpressionTree build(String[] p)
 	{
 		Object nextItem;
 		ExpressionTree operand0;
 		ExpressionTree operand1;
 		
 //		for all elements in the postfix expression
-	    for (int i=0; i < p.length(); i++)
+	    for (int i=0; i < p.length; i++)
 	    {
-	    	nextItem = p.charAt(i); 
+	    	nextItem = p[i]; 
 	    	
 //	    	if the element is in the operations list, pop two trees and make a new tree
 	    	if ( Arrays.asList(operations).contains(nextItem) )

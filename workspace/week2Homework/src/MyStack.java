@@ -16,10 +16,8 @@ public class MyStack<T>
 	
 //	removes object from front of stack
 	public T pop()
-	{
-//		if (stackList.size() == 0)
-//			return Exception;
-					
+	{		
+//		write exception here
 		T poppedItem = stackList.get(0);
 		stackList.remove(0);
 		return poppedItem;

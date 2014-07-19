@@ -122,4 +122,44 @@ public class ExpressionTree {
 	}
 	
 	
+	public Double evaluate()
+	{    
+		Double left_val;
+		Double right_val;
+		Double nValue;
+		
+		if (left != null && right != null)
+		{
+			left_val = left.evaluate();
+			right_val = right.evaluate();
+			
+			if (element.equals("+"))
+			{
+				nValue = Double.valueOf(left_val.doubleValue()+
+					right_val.doubleValue());	
+			}
+			else if (element.equals("-"))
+			{
+				nValue = Double.valueOf(left_val.doubleValue()-
+					right_val.doubleValue());
+			}
+			else if (element.equals("*"))
+			{
+				nValue = Double.valueOf(left_val.doubleValue()*
+					right_val.doubleValue());
+			}
+			else
+			{
+				nValue = Double.valueOf(left_val.doubleValue()/
+					right_val.doubleValue());
+			}
+			return nValue;
+		}
+		else
+		{
+			Double nodeValue = Double.parseDouble(element.toString());
+			return nodeValue;
+		}
+	}
+	
 }

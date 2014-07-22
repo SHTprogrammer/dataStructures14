@@ -11,7 +11,7 @@ public class palindromeTest
 	 */
 	public static void main( String[] args)
 	{   	
-	    LinkedList<String> fileRead = BuffRead("/Users/Q/Desktop/palindromes.txt");	    
+	    LinkedList<String> fileRead = BuffRead("/Users/Q/dataStructures14/week2/palindromes.txt");	    
 	    PalindromeFinder palCheck = new PalindromeFinder();
 
         for (int i =0;i < fileRead.size(); i++)

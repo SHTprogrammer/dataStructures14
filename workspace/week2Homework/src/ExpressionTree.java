@@ -15,10 +15,6 @@ public class ExpressionTree {
 	public ExpressionTree(Object e, ExpressionTree lET, ExpressionTree rET)
 	{
 		element = e;
-		if (element instanceof Integer)
-			isOperator = false;
-		else 
-			isOperator = true;
 		left = lET;
 		right = rET;	
 	}
@@ -49,8 +45,8 @@ public class ExpressionTree {
 	
 	
     /*	
-    * Traverses tree and returns prefix expression equivalent to the ExpressionTree.
-    * Returns string.
+    * User-exposed prefix print method. Traverses tree and returns prefix expression 
+    * equivalent to the ExpressionTree, returns result expression as string.
     */	
 	public String prefixPrint()
 	{	
@@ -65,8 +61,8 @@ public class ExpressionTree {
 	}
 
 	/*	
-	* Traverses tree and returns prefix expression equivalent to the ExpressionTree	
-	* Inner method, takes in an empty linked list and passes the results back through
+	* Inner method, traverses tree and returns prefix expression equivalent to the 
+	* ExpressionTree. Takes in an empty linked list and passes the results back through
 	* that list via recursion
 	*/	
 	private LinkedList<Object> prePrintRecurse(LinkedList<Object> elements)
@@ -79,6 +75,10 @@ public class ExpressionTree {
 		return elements;
 	}
 	
+	/*
+	 * User-exposed method to print infix expression. Creates empty LinkedList
+	 * to pass to the private recursive infix print method and returns expression as string
+	 */
 	public String infixPrint()
 	{
 		LinkedList<Object> infix = new LinkedList<Object>();
@@ -93,9 +93,9 @@ public class ExpressionTree {
 	
 	
 	/*
-	 * Traverses tree and returns infix expression equivalent to the ExpressionTree.	
-	 * Inner method, takes in an empty linked list and passes the results back through
-	 * that list via recursion
+	 * Inner method, traverses tree and returns infix expression equivalent 
+	 * to the ExpressionTree, takes in an empty linked list and passes the results 
+	 * back through that list via recursion
 	 */
 	private LinkedList<Object> inPrintRecurse(LinkedList<Object> elements)
 	{
@@ -121,7 +121,10 @@ public class ExpressionTree {
 		return elements;
 	}
 	
-	
+	/*
+	 * Method to evaluate the expression tree, assumes initial postfix expression 
+	 * used in tree construction contained elements that can be parsed as doubles.
+	 */
 	public Double evaluate()
 	{    
 		Double left_val;

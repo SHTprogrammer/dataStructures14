@@ -8,6 +8,10 @@ public class treeBuilder
 	public treeBuilder(){
 	}
 	
+	/*
+	 * Creates an ExpressionTree from a postfix expression recursively 
+	 * using MyStack class
+	 */
 	public ExpressionTree build(String[] p)
 	{
 		Object nextItem;
@@ -19,7 +23,8 @@ public class treeBuilder
 	    {
 	    	nextItem = p[i]; 
 	    	
-//	    	if the element is in the operations list, pop two trees and make a new tree
+//	    	if the element is in the operations list, pop two trees and make a new tree 
+//	    	with the previous two as left and right references
 	    	if ( Arrays.asList(operations).contains(nextItem) )
 	    	{
 	    		operand1 = expStack.pop();
@@ -27,7 +32,7 @@ public class treeBuilder
 	    	    expStack.push(new ExpressionTree(nextItem,operand0,operand1));
 	    	}
 	    	
-//	    	else, must be either a variable or a number, so put in an expression tree 
+//	    	else, must be either a variable or a number, so put element in an expression tree 
 //	    	and push onto stack
 	    	else
 	    	    expStack.push(new ExpressionTree(nextItem,null,null));

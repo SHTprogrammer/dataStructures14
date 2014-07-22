@@ -4,6 +4,10 @@ public class PalindromeFinder
 	{		
 	}
 	
+	/*
+	 * Takes text string as input, removes non-word characters, converts to lower case,
+	 *  and checks to see if string is a palindrome
+	 */
 	public boolean evaluate(String rawPalindrome)	    
 	{	
 	    String palIn = rawPalindrome.replaceAll("\\W","").toLowerCase();
@@ -30,8 +34,4 @@ public class PalindromeFinder
         }	
         return true;
 	}
-	
-	
-	
-	
 }

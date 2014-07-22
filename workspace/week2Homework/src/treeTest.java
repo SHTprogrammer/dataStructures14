@@ -1,13 +1,12 @@
 import java.util.Scanner;
 
-//import java.util.LinkedList;
-//
-//import java.util.Arrays;
-//import java.util.Stack;
-//import java.util.LinkedList;
-
 public class treeTest
 {
+	
+	/*
+	 * Test class for ExpressionTree. Uses scanner to get posfix expression from 
+	 * user and converts to tree
+	 */
 	public static void main( String[] args)
 	{   
 		

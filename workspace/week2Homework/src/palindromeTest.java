@@ -11,7 +11,7 @@ public class palindromeTest
 	 */
 	public static void main( String[] args)
 	{   	
-	    LinkedList<String> fileRead = BuffRead("/Users/Q/dataStructures14/week2/palindromes.txt");	    
+	    LinkedList<String> fileRead = BuffRead("palindromes.txt");	    
 	    PalindromeFinder palCheck = new PalindromeFinder();
 
         for (int i =0;i < fileRead.size(); i++)
@@ -19,8 +19,6 @@ public class palindromeTest
         	String currentLine = fileRead.get(i);
         	if (palCheck.evaluate(currentLine)==true)
         	    System.out.println("IS a palindrome: '"+currentLine+"'");
-        	else
-        	    System.out.println("NOT a palindrome: '"+currentLine+"'");
         }	   
 	}
 	

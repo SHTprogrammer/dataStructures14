@@ -82,6 +82,7 @@ List B:  [w] <-> [x] <-> [y] <-> [z]
         
 becomes: [w] <-> [y] <-> [x] <-> [z]  
 
+
 * x.next = z (y.next)
 * w.next = y (x.next)
 * y.next = x

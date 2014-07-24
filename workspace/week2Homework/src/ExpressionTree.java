@@ -138,6 +138,7 @@ public class ExpressionTree {
 			
 			if (element.equals("+"))
 			{
+			
 				nValue = Double.valueOf(left_val.doubleValue()+
 					right_val.doubleValue());	
 			}

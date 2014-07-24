@@ -10,7 +10,7 @@ public class treeTest
 	public static void main( String[] args)
 	{   
 		
-	    System.out.println("Enter postifx expression, without spaces:");
+	    System.out.println("Enter postifx expression, without spaces or commas (eg 12+345+**):");
 	    Scanner sc = new Scanner(System.in);
 	    String rawPostfixIn = sc.next();
 	    sc.close();

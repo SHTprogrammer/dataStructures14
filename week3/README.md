@@ -51,3 +51,9 @@ you should submit a sample small dictionary file. Write your own hash
 function. In addition, the file being spellchecked should be provided as a 
 command line argument._
 
+-write hash function
+-take dictionary file and feed into hash table
+-given full hash table, check to see if word exists in hash table
+-if not, check to see 
+
+

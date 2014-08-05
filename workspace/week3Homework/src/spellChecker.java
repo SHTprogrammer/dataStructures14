@@ -1,8 +1,5 @@
-import java.io.File;
-import java.io.IOException;
 import java.util.Hashtable;
 import java.util.LinkedList;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 
@@ -27,9 +24,8 @@ public class spellChecker {
 	 * each word to a hash table
 	 * @param filename, takes in filepath of dictionary text file
 	 */
-	public void dictRead(String filename){
+	public void dictRead(LinkedList<String> lineList){
 		
-		LinkedList<String> lineList = myFileRead(filename);
 		for (int i=0; i<lineList.size(); i++){
 			String nextWord = lineList.get(i).replaceFirst("^[^a-zA-Z']+", "")
     	    	    .replaceAll("[^a-zA-Z']+$", "")
@@ -43,11 +39,14 @@ public class spellChecker {
 		return hashDict.containsValue(testWord);
 	}
 	
-	public LinkedList<String> checkFile(String filename){
-//	public LinkedList<String> checkFile(LinkedList<String> lineList){
+	/*
+	 * Checks words in text file against hash dictionary and returns words not 
+	 * found, their line number, and potential fixes in spelling
+	 * @param lineList, takes in linked list of lines in a text file
+	 */
+	public LinkedList<String> checkFile(LinkedList<String> lineList){
 		
 		LinkedList<String> badWords = new LinkedList<>();
-		LinkedList<String> lineList = myFileRead(filename);
 		for (int i=0; i<lineList.size(); i++){
     		
 //			iterate through all lines in the file
@@ -83,10 +82,13 @@ public class spellChecker {
    	    
    	    return badWords;			
 	}
-
+	
+	
 	/*
-	 * Checks permutations of a word not in the dictionary to try and find a match
-	 * Adds a letter at each position, removes each letter, and swaps each letter pair
+	 * Checks permutations of a word not in the dictionary to try and 
+	 * find a match
+	 * Adds a letter at each position, removes each letter, and swaps each 
+	 * letter pair
 	 * @param badWord, takes in a string of a word not in the dictionary
 	 */
     public String wordPermute(String badWord){
@@ -103,7 +105,6 @@ public class spellChecker {
 	        	}
 	        }
     	}
-
 //    	then do remove character permutations
     	for (int i = 0; i< badWord.length(); i++){
 	        StringBuilder c = new StringBuilder(badWord);
@@ -112,8 +113,7 @@ public class spellChecker {
 	        	if (!wordResults.contains(c.toString()))
 	        	    wordResults.add(c.toString());
 	        }
-    	}
-    	
+    	}   	
 //    	then do letter swap permutations
     	for (int i=0; i<badWord.length() -1;i++ ){
     		StringBuilder c = new StringBuilder(badWord);
@@ -132,31 +132,7 @@ public class spellChecker {
     		wOut = wordResults.toString().substring(1,wordResults.toString().length()-1);
     	return wOut;
     }
-	
-	
-	
-	/*
-	 * file reader that converts text file into linked list of lines
-	 * uses Scanner
-	 * @param filename, takes in filepath to txt file
-	 */
-	public static LinkedList<String> myFileRead(String filename)
-	{	 
-		    LinkedList<String>palFileArray = new LinkedList<>();
-		    
-		    try {
-		    	Scanner sc2 = new Scanner(new File(filename));
-		        while (sc2.hasNextLine()) 
-		        {
-		              String aString = sc2.nextLine();
-		              palFileArray.add(aString);
-		        }
-		        sc2.close();
-		    } 
-		    catch (IOException e)
-		    {
-		    	System.out.println("fileNotFound");
-		    }
-		    return (palFileArray);
-	 }
+    
 }
+	
+	

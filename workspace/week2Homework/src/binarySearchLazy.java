@@ -253,7 +253,8 @@ public class binarySearchLazy<AnyType extends Comparable<? super AnyType>>
      * Internal method to compute height of a subtree.
      * @param t the node that roots the subtree.
      */
-    private int height( BinaryNode<AnyType> t )
+    @SuppressWarnings("unused")
+	private int height( BinaryNode<AnyType> t )
     {
         if( t == null )
             return -1;
@@ -265,7 +266,8 @@ public class binarySearchLazy<AnyType extends Comparable<? super AnyType>>
     private static class BinaryNode<AnyType>
     {
             // Constructors
-        BinaryNode( AnyType theElement )
+        @SuppressWarnings("unused")
+		BinaryNode( AnyType theElement )
         {
             this( theElement, null, null );
         }
@@ -293,7 +295,8 @@ public class binarySearchLazy<AnyType extends Comparable<? super AnyType>>
      * throws UnderflowException
      */
     
-    public static void main( String [ ] args ) throws UnderflowException 
+    @SuppressWarnings("unused")
+	public static void main( String [ ] args ) throws UnderflowException 
     {
         binarySearchLazy<Integer> t = new binarySearchLazy<>( );
         final int NUMS = 4000;

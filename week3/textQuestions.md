@@ -11,6 +11,7 @@ _Show the result of inserting 2, 1, 4, 5, 9, 3, 6, 7 into an initially
 empty AVL tree._
 
 insert 9:
+
       2 
      / \
     1   4 <-error, single rotation to fix
@@ -20,6 +21,7 @@ insert 9:
             9
 
 insert 3:
+
       2 <-error, double rotation to fix
      / \
     1   5 
@@ -121,7 +123,7 @@ tree, the tree cannot be uniquely reconstructed.
 "Binary tree" does not enforce ordering on the nodes. (Not BST)
 
 Proof by counterexample, the following two binary trees have the same pre- and 
-postorder traversals:
+postorder traversals, respectively (3,2,1) and (1,2,3):
 
         3
        /
@@ -195,8 +197,7 @@ _d. Hash table with second hash function h2(x) = 7 − (x mod 7)._
 
 1989 doesn't go, 5,1,7 and 3 are full.
 
-### 5. Weiss, Exercise 5.2 - Use a new table size of 19, adjust the hash 
-function accordingly. 
+### 5. Weiss, Exercise 5.2 - Use a new table size of 19, adjust the hash function accordingly. 
 
 _Show the result of rehashing the hash tables in Exercise 5.1._
 

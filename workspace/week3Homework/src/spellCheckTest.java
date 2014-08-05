@@ -1,41 +1,48 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
-
+import java.util.Scanner;
 
 public class spellCheckTest {
 	
-	public static void main(String[] args){
-		
+	public static void main(String[] args) throws FileNotFoundException{
+			
+//		check for two command line args
+	    if(args.length < 2) {
+	        System.out.println("Error, need a dictionary and a text file to check");
+		    System.exit(1);
+	    }
+	   
+//	    convert first file into list
+	    LinkedList<String>dictList = new LinkedList<>();  
+	    Scanner sc2 = new Scanner(new FileInputStream(args[0]));
+        while (sc2.hasNextLine()) 
+        {
+              String aString = sc2.nextLine();
+              dictList.add(aString);
+        }
+        sc2.close();
+	    
+//		convert second file into list
+	    LinkedList<String>textList = new LinkedList<>(); 
+	    Scanner sc3 = new Scanner(new FileInputStream(args[1]));
+        while (sc3.hasNextLine()) 
+        {
+              String aString = sc3.nextLine();
+              textList.add(aString);
+        }
+        sc3.close();
+	    
+//      pass two lists to spell checker
 		spellChecker check1 = new spellChecker();
-//		check1.dictRead("words.txt");
+		check1.dictRead(dictList);
 		
-		check1.dictRead("500Words.txt");
-
-//		
-//		check1.printDict();
 		LinkedList<String> fileResults = 
-			check1.checkFile("opheliaGoesNuts.txt");
+			check1.checkFile(textList);
 		
-//		LinkedList<String> testList = new LinkedList<>();
-//		testList.add("  This is a list of test words do't on’t");
-//		testList.add("   including these weird ones wod ya si");
-//		testList.add("  Oph.  Indeed, la, without an oath I'll make an end on’t");
-//		
-//		LinkedList<String> fileResults = 
-//		check1.checkFile(testList);	
-		
+//		print results
 		for (int i=0; i<fileResults.size(); i++){
 			System.out.println(fileResults.get(i));
-		}
-		
-//		System.out.println(check1.wordPermute("ben"));
-//		System.out.println(check1.wordPermute("tof"));
-//		System.out.println(check1.wordPermute("thsi"));
-		System.out.println(check1.wordPermute(" on't"));
-
-		
+		}	
 	}
-	
-	
-	
-
 }

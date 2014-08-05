@@ -1,4 +1,3 @@
-import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
@@ -6,7 +5,7 @@ import java.util.TreeSet;
 
 public class spellChecker {
 
-	Hashtable<String,String> hashDict = new Hashtable<String,String>();
+	myHashTable hashDict = new myHashTable();
 	
 	/*
 	 * Constructor
@@ -15,9 +14,6 @@ public class spellChecker {
 	}
 	
 	
-	public void printDict(){
-		System.out.println(hashDict.values());
-	}
 	
 	/*
 	 * reads a dictionary text file with one word on each line and adds 
@@ -31,12 +27,12 @@ public class spellChecker {
     	    	    .replaceAll("[^a-zA-Z']+$", "")
     	    	    .toLowerCase().replace("’","'");
 			
-		    hashDict.put(nextWord,nextWord);
+		    hashDict.insert(nextWord);
 		}
 	}
 	
 	public boolean findWord(String testWord){
-		return hashDict.containsValue(testWord);
+		return hashDict.contains(testWord);
 	}
 	
 	/*

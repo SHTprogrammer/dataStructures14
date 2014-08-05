@@ -24,7 +24,7 @@ The AVL Tree class for this problem is contained in AvlTree.java. This is
 Weiss' AVL tree, modified to hold a linked list in each node. 
 UnderflowException.java is an exception thrown by AVLTree.
 
-lineFindTest.java takes a text file as a command line argument. It converts 
+lineTreeTest.java takes a text file as a command line argument. It converts 
 the file into a linkedList of lines. It also contains a method called
 makeTextTree that builds an AVLtree of words and linked lists containing the
 line numbers in which the words occur.
@@ -75,9 +75,7 @@ spellCheckTest.java takes two command line arguments, the dictionary file and
 the text file to be checked. It inputs these two files to spellChecker and 
 prints the results.
 
-
-
-
+myHashTable.java is the hash table class into which the dictionary is fed.
 
 
 

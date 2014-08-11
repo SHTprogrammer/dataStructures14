@@ -11,7 +11,7 @@ public class lineTreeTest {
 
 //		check for two command line args
 	    if(args.length < 1) {
-	        System.out.println("Error, need a dictionary and a text file to check");
+	        System.out.println("Error, need a text file to check");
 		    System.exit(1);
 	    }
 	   

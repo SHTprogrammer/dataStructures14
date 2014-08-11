@@ -28,9 +28,9 @@ _Sort 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5 using quicksort with median-of-three
 partitioning and a cutoff of 3._
 
 
-####Top level sort (recursion 0 level):
+Top level sort (recursion 0 level):
 
-Mof#3(3,9,5) = 5, 5 == pivot.
+Mof3(3,9,5) = 5, 5 == pivot.
 
 Sort 1st, mid, and last, and partition:
 
@@ -48,7 +48,7 @@ Sort 1st, mid, and last, and partition:
 
     large: [5 6 9]
 
-####Sort small side (recursion 1 level):
+Sort small side (recursion 1 level):
 
 Mof3(3,1,5) = 3, 3 == pivot.
 
@@ -59,7 +59,7 @@ Sort 1st, mid, and last, and partition:
     [1 1 4 2 5 3 |3 5]
 
     [1 1 (4) 2 5 (3) |3 5]
-          i         j   
+          i       j   
 
     [1 1 3 2 (5) 4 |3 5]
            j  i 
@@ -70,7 +70,7 @@ Sort 1st, mid, and last, and partition:
 
     large: [3 4 5 5]
 
-####Sort small of small (recursion 2 level):
+Sort small of small (recursion 2 level):
 
 Mof3(1,1,2) = 1, 1 == pivot.
 
@@ -89,7 +89,7 @@ Sort 1st, mid, and last, and partition:
 
     insertion sort returns: [1 1 2 3]
 
-####Sort large of small (recursion 2 level):
+Sort large of small (recursion 2 level):
 
 Mof3(3,4,5) = 4, 4 == pivot.
 
@@ -99,7 +99,6 @@ Sort 1st, mid, and last, and partition:
      j i
 
     insertion sort returns: [3 4 5 5]
-
 
 Insertion sort takes care of large of top (recursion 1 level):
 
@@ -122,10 +121,45 @@ items equal to the pivot, you may use d additional Comparable swaps, above and
 beyond the two-way partitioning algorithm. (Hint: As i and j move toward each 
 other, maintain five groups of elements as shown below):_
 
-_EQUAL SMALL UNKNOWN LARGE EQUAL_
-_          i         j          _
+    EQUAL SMALL UNKNOWN LARGE EQUAL
+               i       j
 
+```java
+int i = left, j = right - 1;
+int leftPivots = 0;
+int rightPivots = 0;
 
+for( ; ; ){
+
+  while( a[ ++i ].compareTo( pivot ) < 0 ){}
+  while( a[ --j ].compareTo( pivot ) > 0 ){} 
+
+  if (a[j].compareTo(pivot) == 0){
+    swapReferences(a, a[j], left + 1); //swap small side pivots to left
+    leftPivots++;
+  }
+
+  if (a[i].compareTo(pivot) == 0){
+    swapReferences(a, a[i], right - 2); //swap large side pivots to right
+    rightPivots++;
+  }
+
+  if(i<j)
+    swapReferences( a, i, j );
+  else 
+    break;
+}
+
+// return right elements + pivot
+for(int k = 0; k < rightPivots + 1; k++){
+  swapReferences( a, i + k, right - (k+1) );  
+}
+
+// return left elements
+for(int k = 0; k < leftPivots; k++){
+  swapReferences( a, j - k, left + (k+1) );
+}
+```
 
 ###4. Weiss, Exercise 9.1.
 
@@ -146,15 +180,26 @@ _Find a topological ordering for the graph in Figure 9.81._
     Enq:  s G D,H A - B,E - I F C t
     Deq:  s G  D  H A  B  E I F C t
 
-Ordering: [s,G,D,H,A,B,E,I,F,C,t]
-
+    Ordering: [s,G,D,H,A,B,E,I,F,C,t]
+                                                                                                                                                            
 
 ###5. Weiss, Exercise 9.10a.
 
 _Explain how to modify Dijkstra’s algorithm to produce a count of the number 
 of different minimum paths from v to w._
 
+Djikstra's algorithm keeps track of the length of the shortest path to a given 
+vertex. You could keep track of another value as well, the number of shortest
+paths that are equal to that length. 
 
+When you know v's shortest path, you can mark it as known. You have kept track of
+the number of shortest paths to v. Then, for every adjacenct vertex w to v you can 
+add the number of shortest paths to w (through v or not) to the count of shortest
+paths to v.
+
+If the shortest path to w through v is less than the length of the existing path,
+then replace the count of w with the count of v. If it's the same length, then 
+add the count of v to the count of w.
 
 
 ###6. Weiss, Exercise 9.15. 
@@ -162,10 +207,56 @@ of different minimum paths from v to w._
 _a. Find a minimum spanning tree for the graph in Figure 9.84 using both 
 Prim’s and Kruskal’s algorithms._
 
+Vertices:
+
+  (A,B) 3  Accepted
+
+  (B,C) 10 Rejected
+
+  (D,A) 4  Accepted
+
+  (A,E) 4  Rejected
+  
+  (E,B) 2  Accepted
+  
+  (B,F) 3  Accepted
+  
+  (F,C) 6  Rejected
+  
+  (C,G) 1  Accepted
+  
+  (D,E) 5  Rejected
+  
+  (E,F) 11 Rejected
+  
+  (F,G) 2  Accepted
+  
+  (D,H) 6  Rejected
+  
+  (H,E) 2  Accepted
+  
+  (E,I) 1  Accepted
+  
+  (I,F) 3  Rejected
+  
+  (F,J) 11 Rejected
+  
+  (J,G) 8  Rejected
+  
+  (H,I) 4  Rejected
+  
+  (I,J) 7  Accepted
+
+       A - B   C
+      /   / \   \
+     D   E   F - G
+        / \
+       H   I - J
+    
+
 _b. Is this minimum spanning tree unique? Why?_
 
-
-
+No, not unique, you can connect the vertices in more than one configuration.
 
 
 ###7. Weiss, Exercise 9.38a and 9.38b. 
@@ -192,7 +283,7 @@ If either of:
 1) the intersection of the x-ranges of a and b
 2) the inersection of the y-ranges of a and b 
 
-are both zero, then the two sticks are not in the same place. 
+are zero, then the two sticks are not in the same place. 
 
 If the intersection of both ranges != 0, then calculate the point at which the
 two sticks cross (intersection of the two lines in the x-y planes) and the 

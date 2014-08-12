@@ -1,4 +1,5 @@
-    class UnderflowException extends Exception
+    @SuppressWarnings("serial")
+	class UnderflowException extends Exception
     {
           //Parameterless Constructor
           public UnderflowException(){}

@@ -1,15 +1,18 @@
+
+import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
-import java.util.TreeSet;
+import java.util.TreeMap;
 
 public class djikstrasMap{
 	
-	BinaryHeap<Integer> mapQueue;
 	
+	int numNodes;
 	LinkedList<String> edges;
 	LinkedList<String> coords;
-	TreeSet<Vertex> theCities;
+	TreeMap<String,Vertex> theCities = new TreeMap<>();
+
 	
 	/*
 	 * Empty constructor
@@ -29,54 +32,82 @@ public class djikstrasMap{
     	for ( int i =0; i < edges.size(); i++ ){
     		String newLine = edges.get(i);
 			StringTokenizer st = new StringTokenizer(newLine);
-			String cityA;
-			String cityB;
-			String dist;
+
+			String cityA = new String();
+			String cityB = new String();
+			String dist = new String();
 			int itemCount = 0;
+			Vertex a;
+			Vertex b;
 			while (st.hasMoreTokens()) {		
   	    	     String nextItem = st.nextToken();
+//  	    	     System.out.println(itemCount+", "+nextItem);
+  	    	     
   	    	     if( itemCount == 0 )
   	    	    	 cityA = nextItem;
   	    	     if( itemCount == 1 )
   	    	    	 cityB = nextItem;
-  	    	     if( itemCount == 3 )
+  	    	     if( itemCount == 2 )
   	    	    	 dist = nextItem;
   	    	     itemCount++;
 			}
+//			System.out.println(cityA);
+//			System.out.println(cityB);
+//			System.out.println(dist);
+//			System.out.println(theCities.isEmpty());
 			
-			if( theCities.containsKey(cityA) ){
-				Vertex a = theCities.remove(cityA);
-				a.addAdjacent(cityB, dist.asInt());
+			if( !theCities.isEmpty() && theCities.containsKey(cityA) ){
+				a = theCities.remove(cityA);
+				a.addAdjacent(cityB, dist);
 			}
 			else {
-				Vertex a = new Vertex(cityA);
-				a.addAdjacent(cityB, dist.asInt());
+				a = new Vertex(cityA);
+				a.addAdjacent(cityB, dist);
 			}
 			
-			if( theCities.containsKey(cityB) ){
-				Vertex b = theCities.remove(cityB);
-				b.addAdjacent(cityA, dist.asInt());)
+			if( !theCities.isEmpty() && theCities.containsKey(cityB) ){
+				b = theCities.remove(cityB);
+				b.addAdjacent(cityA, dist);
 			}
 			else {
-				Vertex b = new Vertex(cityB);
-				b.addAdjacent(cityA, dist.asInt());
+				b = new Vertex(cityB);
+				b.addAdjacent(cityA, dist);
 			}
 				
-			theCities.add(a, a.name);
-			theCities.add(b, b.name);			
-			}  	     
+			theCities.put(a.name, a);
+			theCities.put(b.name, b);	
+			
+			
+			}  	  
+    	numNodes = theCities.size();
+		System.out.println(theCities.toString());
+
     	}
     	
-    public void findPath( String s, String t ){
+//    public void findPath( String s, String t ){
+      public void findPath( ){    	
+//    	make priority queue that takes vertices
+		PriorityQueue<Vertex> mapQueue = new PriorityQueue<>(numNodes,
+    			new Comparator<Vertex>() {
+                    public int compare(Vertex a1, Vertex a2) {
+                        return a2.dist.compareTo(a1.dist);
+                }
+            });
+    	  	
+//      dump all cities from tree storage into queue with distance = 0
     	while (!theCities.isEmpty()){
-    		Vertex thisCity = theCities.last();
+    		String lastKey = theCities.lastKey();
+    		Vertex thisCity = theCities.remove(lastKey);
     		thisCity.dist = 1000000;
     		thisCity.isKnown = false;
-    		mapQueue.insert()
+    		 
+    		mapQueue.add(thisCity);
+    	}
+    	
+    	System.out.println(mapQueue.toString());
     	
     		
     		
-    	}
     }
     	
 }

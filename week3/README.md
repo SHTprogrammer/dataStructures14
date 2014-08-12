@@ -18,14 +18,14 @@ unique word that appeared in the input file along with a list of line on which
 that word appears. You may use Weiss' AVL tree code as a starting point for 
 your program._
 
+poloniusAndLaertes.txt is the test file for the AvlTree.
+
 The AVL Tree class for this problem is contained in AvlTree.java. This is 
 Weiss' AVL tree, modified to hold a linked list in each node. 
 UnderflowException.java is an exception thrown by AVLTree.
 
-lineFindTest.java prompts the user for the location of a text file to load into
-a text tree. I tested this file on "poloniusAndLaertes.txt". lineFindTest holds
-a method called BuffRead to convert the text file into a list of strings 
-corresponding to lines in the text file. It also contains a method called
+lineTreeTest.java takes a text file as a command line argument. It converts 
+the file into a linkedList of lines. It also contains a method called
 makeTextTree that builds an AVLtree of words and linked lists containing the
 line numbers in which the words occur.
 
@@ -51,9 +51,31 @@ you should submit a sample small dictionary file. Write your own hash
 function. In addition, the file being spellchecked should be provided as a 
 command line argument._
 
--write hash function
--take dictionary file and feed into hash table
--given full hash table, check to see if word exists in hash table
--if not, check to see 
+The small dictionary file is 500words.txt
+
+The file being spell checked is opheliaGoesNuts.txt
+
+spellChecker.java has several methods:
+
+  * dictRead takes in a linkedList of lines from a dictionary and loads every 
+    line into a hashtable. It assumes every line is a single word.
+
+  * findWord returns a boolean based on whether a word exists in the hash table
+
+  * checkFile takes a linkedList of lines from a text file and checks every 
+    word against the hash table. If the word does not exist then it returns the 
+    word, the line number of the word, and the result of running wordPermute 
+    on the word
+
+  * wordPermute takes a word not found in the hash table and looks for 
+    near-misses by adding a letter in every location, subtracting each letter, 
+    and swapping each pair of adjacent letters
+
+spellCheckTest.java takes two command line arguments, the dictionary file and
+the text file to be checked. It inputs these two files to spellChecker and 
+prints the results.
+
+myHashTable.java is the hash table class into which the dictionary is fed.
+
 
 

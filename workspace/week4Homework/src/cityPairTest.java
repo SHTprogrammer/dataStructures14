@@ -33,9 +33,13 @@ public class cityPairTest{
         }
         sc3.close();
 		
-		System.out.println(cityPairs.toString());
-		System.out.println(cityLoc.toString());
+//		System.out.println(cityPairs.toString());
+//		System.out.println(cityLoc.toString());
 		
+        djikstrasMap djMap1 = new djikstrasMap(cityPairs,cityLoc);
+        djMap1.makeVertices();
+        
+        djMap1.findPath();
 		
 		
 		

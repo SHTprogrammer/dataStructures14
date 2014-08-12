@@ -9,6 +9,10 @@ public class Vertex{
     Vertex path;
     String name;
 	
+    public Vertex(){
+    	
+    }
+    
 	public Vertex(String n){
         name = n;
 	}
@@ -29,5 +33,9 @@ public class Vertex{
 		listOut.append("]");
 		return listOut.toString();
 
+	}
+	
+	public void setDist(int d){
+		dist = d;
 	}
 }

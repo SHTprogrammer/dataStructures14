@@ -85,7 +85,7 @@ public class djikstrasMap{
     	}
     	
 //    public void findPath( String s, String t ){
-      public void findPath( ){    	
+      public void findPath( String s ){    	
 //    	make priority queue that takes vertices
 		PriorityQueue<Vertex> mapQueue = new PriorityQueue<>(numNodes,
     			new Comparator<Vertex>() {
@@ -94,17 +94,36 @@ public class djikstrasMap{
                 }
             });
     	  	
-//      dump all cities from tree storage into queue with distance = 0
+//      dump all cities from tree storage into queue with distance infinity
     	while (!theCities.isEmpty()){
     		String lastKey = theCities.lastKey();
     		Vertex thisCity = theCities.remove(lastKey);
-    		thisCity.dist = 1000000;
+    		
+//    		System.out.println(lastKey);
+    		
+    		if( lastKey.equals(s) )
+    			thisCity.setDist(0);
+    		else
+    		    thisCity.setDist(1000000);
+    		
     		thisCity.isKnown = false;
     		 
     		mapQueue.add(thisCity);
     	}
     	
-    	System.out.println(mapQueue.toString());
+//    	pop the smallest distance unknown vertex out of the queue
+    	Vertex knownCity = mapQueue.poll();
+    	System.out.println(knownCity.name);
+    	
+//    	if the polled vertex is not already known, check its adjacencies
+        Vertex newAdjacent = new Vertex();;
+		if (!theCities.containsKey(knownCity.name))
+        	for( int i = 0; i < knownCity.adj.size(); i++)
+        		if (i%2 == 0)
+        			newAdjacent.name = knownCity.adj.get(i);
+		            int adjDist = Integer.parseInt((knownCity.adj.get(i+1)));
+		            newAdjacent.setDist(knownCity.dist+ adjDist);
+        
     	
     		
     		

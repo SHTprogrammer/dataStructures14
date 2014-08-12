@@ -1,10 +1,10 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class Vertex{
 	
-	List<Object> adj;
+	ArrayList<String> adj = new ArrayList<>();
 	boolean isKnown;
-	int dist;
+	Integer dist;
     Vertex path;
     String name;
 	
@@ -12,8 +12,20 @@ public class Vertex{
         name = n;
 	}
 	
-	public void addAdjacent(String n, int d){
-		adj.add(n.toObject());
-		adj.add(n.toObject());
+	public void addAdjacent(String n, String d){
+		adj.add(n);
+		adj.add(d);
+	}
+	
+	public String toString(){
+		StringBuilder listOut = new StringBuilder();
+		listOut.append("["+name+": ("+dist+") ");
+		for (int i = 0; i < adj.size(); i++){
+			if (i!=0)
+				listOut.append(", ");
+			listOut.append(adj.get(i));
+		}
+		listOut.append("]");
+		return listOut.toString();
 	}
 }

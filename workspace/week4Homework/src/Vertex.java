@@ -1,3 +1,9 @@
+/*Vertex contains methods:
+ * Constructors -- empty, or with name
+ * addAdjacent -- add adjacent city and its distance to list
+ * toString -- prints contents of vertex
+ * setDist -- method to set shortest path distance
+ */
 
 import java.util.ArrayList;
 
@@ -8,6 +14,7 @@ public class Vertex{
 	Double dist;
     Vertex path;
     String name;
+    Point coord;
 	
     public Vertex(){
     	

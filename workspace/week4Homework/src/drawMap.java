@@ -5,14 +5,14 @@ import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
 public class drawMap extends JComponent{
-djikstrasMap cityMap;
+dijkstrasMap cityMap;
 public LinkedList<String> cityPairs;
 public LinkedList<String> cityLoc;
 
 	public drawMap(String startCity, String endCity, 
 			LinkedList<String> cityPairs, LinkedList<String> cityLoc){
 		setPreferredSize(new Dimension(900,400));
-		this.cityMap = new djikstrasMap(cityPairs,cityLoc);
+		this.cityMap = new dijkstrasMap(cityPairs,cityLoc);
 		cityMap.findPath(startCity, endCity);
 	}
 

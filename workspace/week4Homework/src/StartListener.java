@@ -8,7 +8,7 @@ public class StartListener implements ItemListener {
 
     public void itemStateChanged(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
-        	ComponentTester.startCity = e.getItem().toString();
+        	CityPathMapper.startCity = e.getItem().toString();
         }
     
     }

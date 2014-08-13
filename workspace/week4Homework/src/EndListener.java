@@ -9,7 +9,7 @@ public class EndListener implements ItemListener {
 
 	    public void itemStateChanged(ItemEvent e) {
 	        if (e.getStateChange() == ItemEvent.SELECTED) {
-	        	ComponentTester.endCity = e.getItem().toString();
+	        	CityPathMapper.endCity = e.getItem().toString();
 	        }
 	    }
 	}

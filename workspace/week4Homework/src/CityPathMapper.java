@@ -12,7 +12,7 @@ import java.util.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class ComponentTester {
+public class CityPathMapper {
 	public static drawMap path;
 	public static JFrame frame;
 	public static String startCity;

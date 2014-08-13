@@ -22,6 +22,7 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class dijkstrasMap{
 	
@@ -29,6 +30,8 @@ public class dijkstrasMap{
 	String pathNames;
 	String StringPath;
 	LinkedList<Point> pathPoints;
+	TreeSet<String> availableCities = new TreeSet<>();
+
 	
 	int numNodes;
 	LinkedList<String> edges;
@@ -94,8 +97,9 @@ public class dijkstrasMap{
   	    	     itemCount++;
 			}
 
-//			if city already in list, add edge to adjacency, 
-//			  otherwise make vertex & add coordinates
+//			if city already in list, add edge to adjacency,
+//			  otherwise make vertex, add coordinates, and add city name to 
+//			  tree of names (pairwise)
 			if( !this.theCities.isEmpty() 
 					&& this.theCities.containsKey(cityA) ){
 				a = this.theCities.remove(cityA);
@@ -106,10 +110,13 @@ public class dijkstrasMap{
 				a.addAdjacent(cityB, dist);
 				cityCoord = coordHash.get(cityA);			
 				a.setCoord(cityCoord);	
+				availableCities.add(a.name);
+
 			}
 			
-//			if city already in list, add edge to adjacency, 
-//			  otherwise make vertex & add coordinates (pairwise)
+//			if city already in list, add edge to adjacency,
+//			  otherwise make vertex, add coordinates, and add city name to 
+//			  tree of names (pairwise)
 			if( !this.theCities.isEmpty() 
 					&& this.theCities.containsKey(cityB) ){
 				b = this.theCities.remove(cityB);
@@ -119,8 +126,10 @@ public class dijkstrasMap{
 				b = new Vertex(cityB);
 				b.addAdjacent(cityA, dist);			
 				cityCoord = coordHash.get(cityB);
-				b.setCoord(cityCoord);	
+				b.setCoord(cityCoord);
+				availableCities.add(b.name);
 			}
+			
 			this.theCities.put(a.name, a);
 			this.theCities.put(b.name, b);	
 			}  	  

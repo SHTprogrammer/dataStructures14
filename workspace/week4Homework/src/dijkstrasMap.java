@@ -74,7 +74,7 @@ public class dijkstrasMap{
 			int itemCount = 0;
 			Vertex a;
 			Vertex b;
-//			Point cityCoord = new Point();
+			Point cityCoord;
 			
 //			turn line from edge list into two cities and a distance
 			while (st.hasMoreTokens()) {		
@@ -95,17 +95,12 @@ public class dijkstrasMap{
 					&& this.theCities.containsKey(cityA) ){
 				a = this.theCities.remove(cityA);
 				a.addAdjacent(cityB, dist);
-
 			}
 			else {
 				a = new Vertex(cityA);
 				a.addAdjacent(cityB, dist);
-				
-				Point cityCoord = new Point();
 				cityCoord = coordHash.get(cityA);			
 				a.setCoord(cityCoord);	
-				System.out.println(a.name+" "+a.coord.toString());
-
 			}
 			
 //			if city already in list, add edge to adjacency, 
@@ -117,12 +112,9 @@ public class dijkstrasMap{
 			}
 			else {
 				b = new Vertex(cityB);
-				b.addAdjacent(cityA, dist);
-				
-				Point cityCoord = new Point();
+				b.addAdjacent(cityA, dist);			
 				cityCoord = coordHash.get(cityB);
 				b.setCoord(cityCoord);	
-				System.out.println(b.name+" "+b.coord.toString());
 			}
 			this.theCities.put(a.name, a);
 			this.theCities.put(b.name, b);	
@@ -164,10 +156,6 @@ public class dijkstrasMap{
 	    	
 	//    	if the polled vertex is not already known, check its adjacencies
 			if (!theCities.containsKey(knownCity.name)){
-//				if (knownCity.coord != null)
-//				    System.out.println(knownCity.name+" "+ knownCity.coord.toString());
-//				else 
-//					System.out.println("Coord not found");
 				
 	        	for( int i = 0; i < knownCity.adj.size(); i++){
 	        		if (i%2 == 0 && 

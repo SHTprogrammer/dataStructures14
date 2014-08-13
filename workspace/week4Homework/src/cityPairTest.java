@@ -37,10 +37,10 @@ public class cityPairTest{
 //		System.out.println(cityLoc.toString());
 		
         djikstrasMap djMap1 = new djikstrasMap(cityPairs,cityLoc);
-        djMap1.makeVertices();
+//        djMap1.makeVertices();
         
-        djMap1.findPath("Miami");
-			
+        djMap1.findPath("Omaha","Boston");
+	    djMap1.findPath("NewOrleans","SanFrancisco");
 		
 	}
 	

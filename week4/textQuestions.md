@@ -135,12 +135,12 @@ for( ; ; ){
   while( a[ --j ].compareTo( pivot ) > 0 ){} 
 
   if (a[j].compareTo(pivot) == 0){
-    swapReferences(a, a[j], left + 1); //swap small side pivots to left
+    swapReferences(a, a[j], left + 1 + leftPivots); //swap small side pivots to left
     leftPivots++;
   }
 
   if (a[i].compareTo(pivot) == 0){
-    swapReferences(a, a[i], right - 2); //swap large side pivots to right
+    swapReferences(a, a[i], right - 2 - rightPivots); //swap large side pivots to right
     rightPivots++;
   }
 

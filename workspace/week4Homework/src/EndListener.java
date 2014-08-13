@@ -1,15 +1,15 @@
 import java.awt.event.*;
+
 import javax.swing.*;
 
-public class EndListener implements ActionListener {
-    private JTextField textField;
+public class EndListener implements ItemListener {
+	
+	    public EndListener(JComboBox<String> selection) {
+	    }
 
-    public EndListener(JTextField aTextField) {
-		textField = aTextField;
-    }
-
-    public void actionPerformed(ActionEvent ae) {
-		ComponentTester.endCity = textField.getText();
-    	textField.setText("End in " + ComponentTester.endCity);
-    }
-}
+	    public void itemStateChanged(ItemEvent e) {
+	        if (e.getStateChange() == ItemEvent.SELECTED) {
+	        	ComponentTester.endCity = e.getItem().toString();
+	        }
+	    }
+	}

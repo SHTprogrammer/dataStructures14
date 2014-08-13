@@ -1,15 +1,15 @@
 import java.awt.event.*;
 import javax.swing.*;
 
-public class StartListener implements ActionListener {
-    private JTextField textField;
+public class StartListener implements ItemListener {
 
-    public StartListener(JTextField aTextField) {
-		textField = aTextField;
+    public StartListener(JComboBox<String> selection) {
     }
 
-    public void actionPerformed(ActionEvent ae) {
-		ComponentTester.startCity = textField.getText();
-    	textField.setText("Start in" + ComponentTester.startCity);
+    public void itemStateChanged(ItemEvent e) {
+        if (e.getStateChange() == ItemEvent.SELECTED) {
+        	ComponentTester.startCity = e.getItem().toString();
+        }
+    
     }
 }

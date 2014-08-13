@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
 
-public class djikstrasMap{
+public class dijkstrasMap{
 	
 	Double pathLength;
 	String pathNames;
@@ -21,7 +21,7 @@ public class djikstrasMap{
 	/*
 	 * Constructor with edges and coordinate inputs
 	 */
-	public djikstrasMap(LinkedList<String> e, LinkedList<String> c){
+	public dijkstrasMap(LinkedList<String> e, LinkedList<String> c){
 		edges = e;
 		coords = c;
 
@@ -49,8 +49,10 @@ public class djikstrasMap{
   	    	     itemCount++;
 			}
 
-//			if city already in list, add edge to adjacency, otherwise make vertex
-			if( !this.theCities.isEmpty() && this.theCities.containsKey(cityA) ){
+//			if city already in list, add edge to adjacency, 
+//			  otherwise make vertex
+			if( !this.theCities.isEmpty() 
+					&& this.theCities.containsKey(cityA) ){
 				a = this.theCities.remove(cityA);
 				a.addAdjacent(cityB, dist);
 			}
@@ -59,8 +61,10 @@ public class djikstrasMap{
 				a.addAdjacent(cityB, dist);
 			}
 			
-//			if city already in list, add edge to adjacency, otherwise make vertex (pairwise)
-			if( !this.theCities.isEmpty() && this.theCities.containsKey(cityB) ){
+//			if city already in list, add edge to adjacency, 
+//			  otherwise make vertex (pairwise)
+			if( !this.theCities.isEmpty() 
+					&& this.theCities.containsKey(cityB) ){
 				b = this.theCities.remove(cityB);
 				b.addAdjacent(cityA, dist);
 			}
@@ -77,14 +81,7 @@ public class djikstrasMap{
     	
 	
       public void findPath( String s , String t ){    
-//    	catch no vertex case
-    	if (numNodes == 0){
-    		System.err.println("Must run makeVertices method");
-    		System.exit(1);
-    	}
-    	
 //    	make priority queue that takes vertices
-
 		PriorityQueue<Vertex> mapQueue = new PriorityQueue<>(numNodes,
     			new CompareDist());
     	  	
@@ -103,36 +100,33 @@ public class djikstrasMap{
     		    thisCity.setDist(10000000.0);
     		
     		thisCity.isKnown = false;
-    		thisCity.path = null;
-    		 
+    		thisCity.path = null;   		 
     		mapQueue.add(thisCity);
     	}
     	
-    	
-    	
 //    	theCities becomes tree of known nodes
     	while ( theCities.size() < numNodes ){
-//    	    System.out.println(mapQueue.toString());
     		
 	//    	pop the smallest distance unknown vertex out of the queue  	
 	    	Vertex knownCity = mapQueue.poll();
 	        int j = 0;
 	    	
 	//    	if the polled vertex is not already known, check its adjacencies
-
 			if (!theCities.containsKey(knownCity.name)){
 				
-//		    	System.out.println(knownCity.name);
 	        	for( int i = 0; i < knownCity.adj.size(); i++){
-	        		if (i%2 == 0 && !theCities.containsKey(knownCity.adj.get(i)) ){
+	        		if (i%2 == 0 && 
+	        				!theCities.containsKey(knownCity.adj.get(i)) ){
 			            j = i+1;
-	//		            retrieve original vertex from hash map		
+	//		            retrieve original vertex from hash map, make new copy, 
+//			              add to queue with new distance	
 		                Vertex newAdjacent = new Vertex();
 			            Vertex existing = cityHash.get(knownCity.adj.get(i));
 			            newAdjacent.adj = existing.adj;
 			            newAdjacent.name = knownCity.adj.get(i);
 	
-			            newAdjacent.setDist(knownCity.dist+ Double.parseDouble(knownCity.adj.get(j)));
+			            newAdjacent.setDist(knownCity.dist+ 
+			            		Double.parseDouble(knownCity.adj.get(j)));
 			            newAdjacent.path = knownCity;
 
 			            mapQueue.add(newAdjacent);      

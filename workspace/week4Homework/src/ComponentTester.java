@@ -11,8 +11,8 @@ public class ComponentTester {
 	public static JFrame frame;
 	public static String startCity;
 	public static String endCity;
-	public static LinkedList<String> cityPairs;
-	public static LinkedList<String> cityLoc;
+	public static LinkedList<String> cityPairs = new LinkedList<>();
+	public static LinkedList<String> cityLoc = new LinkedList<>();
 	public static void main(String[] args)throws FileNotFoundException{
 		
 	    if(args.length < 2) {
@@ -34,8 +34,7 @@ public class ComponentTester {
               String aString = sc3.nextLine();
               cityLoc.add(aString);
         }
-        sc3.close();
-		
+        sc3.close();		
 	
 		startCity = "Miami";
 		endCity = "Miami";	
@@ -48,8 +47,8 @@ public class ComponentTester {
 		JButton endButton = new JButton("Set End");
 		JButton drawButton = new JButton("DrawPath");
 
-		startButton.addActionListener(new PathListener(textField));	
-		endButton.addActionListener(new PathListener2(textField2));
+		startButton.addActionListener(new StartListener(textField));	
+		endButton.addActionListener(new EndListener(textField2));
 		drawButton.addActionListener(new CreatePathListener());
 		
 		frame = new JFrame();

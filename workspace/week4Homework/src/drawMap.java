@@ -42,7 +42,7 @@ public class drawMap extends JComponent{
 			
 //			draw solution text
 			String pathInfo = cityMap.StringPath;
-			g2.drawString(pathInfo, 250,10);
+			g2.drawString(pathInfo, 100,10);
 			
 //			map all cities
 			for(Map.Entry<String,Vertex> entry : cityMap.theCities.entrySet()) {

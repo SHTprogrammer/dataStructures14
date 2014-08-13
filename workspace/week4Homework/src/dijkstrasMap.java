@@ -7,7 +7,7 @@
  * dijkstras algorithm. sets variables pathLength, pathNames, StringPath, 
  * and pathPoints
  * 
- * stringPath -- recursively finds the names of the cities and coordinates in
+ * stringPath -- recursively finds the names of the cities in
  *   the solution path and returns string
  * 
  * coordPath -- recursively finds the coordinates of the solution path and
@@ -220,12 +220,12 @@ public class dijkstrasMap{
       private StringBuilder stringPath( String t, StringBuilder p ){
     	  Vertex city = theCities.get(t); 
           if( city.path == null ){
-             p.append( city.name + " " + city.coord.toString());
+             p.append( city.name );
           }
           else{
           stringPath( city.path.name, p );
           p.append( " to " );
-          p.append( city.name + " " + city.coord.toString());
+          p.append( city.name );
           }
           return p;
       }

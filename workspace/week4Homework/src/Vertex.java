@@ -43,4 +43,9 @@ public class Vertex{
 	public void setDist(Double d){
 		dist = d;
 	}
+	
+	public void setCoord(Point p){
+		coord = p;
+	}
+	
 }

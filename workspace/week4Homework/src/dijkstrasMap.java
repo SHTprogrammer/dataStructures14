@@ -3,11 +3,17 @@
  * Constructor -- required LinkedLists of edges, coordinates
  * (assumes edges are bi-directional and there are no duplicate coordinates)
  * 
+ * findPath -- takes in the names of two cities as strings and applies 
+ * dijkstras algorithm. sets variables pathLength, pathNames, StringPath, 
+ * and pathPoints
  * 
+ * stringPath -- recursively finds the names of the cities and coordinates in
+ *   the solution path and returns string
  * 
+ * coordPath -- recursively finds the coordinates of the solution path and
+ *   return a LinkedList of Points
+ *   
  */
-
-
 
 
 import java.text.DecimalFormat;
@@ -61,8 +67,7 @@ public class dijkstrasMap{
 					Integer.parseInt(cityY));
 			coordHash.put(newCity, cityXY);
     	}
-		
-		
+				
 //		read edges into vertices
     	for ( int i =0; i < edges.size(); i++ ){
     		String newLine = edges.get(i);
@@ -123,6 +128,10 @@ public class dijkstrasMap{
     }
     	
 	
+      /*
+       * Takes in the names of two cities as strings and runs dijkstras
+       * algorithm to find the solution path
+       */
       public void findPath( String s , String t ){    
 //    	make priority queue that takes vertices
 		PriorityQueue<Vertex> mapQueue = new PriorityQueue<>(numNodes,

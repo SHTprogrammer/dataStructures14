@@ -36,31 +36,36 @@ public class ComponentTester {
         }
         sc3.close();		
 	
-		startCity = "Miami";
-		endCity = "Miami";	
+		startCity = "Albuquerque";
+		endCity = "Albuquerque";	
 		
-		final JTextField textField = new JTextField(20);
-		      textField.setText("");
-		final JTextField textField2 = new JTextField(20);
-			  textField2.setText("");
-		JButton startButton = new JButton("Set Start");
-		JButton endButton = new JButton("Set End");
+//		generate dijkstras path
+		path = new drawMap(startCity, endCity, cityPairs, cityLoc);
+		
+//		retrieve list of all possible cities
+		String[] availCities = new String[path.cityMap.numNodes];
+		TreeSet<String> cityTree = path.cityMap.availableCities;
+		int i = 0;
+		for( String entry : cityTree ) {
+			availCities[i] = entry;
+			i++;
+		}
+
+			  
+	    JComboBox<String> startBox = new JComboBox<>(availCities);
+	    JComboBox<String> endBox = new JComboBox<>(availCities);
 		JButton drawButton = new JButton("DrawPath");
 
-		startButton.addActionListener(new StartListener(textField));	
-		endButton.addActionListener(new EndListener(textField2));
+		startBox.addItemListener((new StartListener(startBox)));	
+		endBox.addItemListener(new EndListener(endBox));
 		drawButton.addActionListener(new CreatePathListener());
 		
 		frame = new JFrame();
 		frame.setLayout(new FlowLayout());
 		
-		path = new drawMap(startCity, endCity, cityPairs, cityLoc);
-		
 		frame.add(drawButton);
-		frame.add(startButton);
-		frame.add(textField);
-		frame.add(endButton);
-		frame.add(textField2);
+		frame.add(startBox);
+		frame.add(endBox);
 		frame.add(path);
 	
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

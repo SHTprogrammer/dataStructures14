@@ -5,7 +5,7 @@ public class Vertex{
 	
 	ArrayList<String> adj = new ArrayList<>();
 	boolean isKnown;
-	Integer dist;
+	Double dist;
     Vertex path;
     String name;
 	
@@ -25,17 +25,17 @@ public class Vertex{
 	public String toString(){
 		StringBuilder listOut = new StringBuilder();
 		listOut.append("["+name+": ("+dist+") ");
-		for (int i = 0; i < adj.size(); i++){
-			if (i!=0)
-				listOut.append(", ");
-			listOut.append(adj.get(i));
-		}
-		listOut.append("]");
+//		for (int i = 0; i < adj.size(); i++){
+//			if (i!=0)
+//				listOut.append(", ");
+//			listOut.append(adj.get(i));
+//		}
+//		listOut.append("]");
 		return listOut.toString();
 
 	}
 	
-	public void setDist(int d){
+	public void setDist(Double d){
 		dist = d;
 	}
 }

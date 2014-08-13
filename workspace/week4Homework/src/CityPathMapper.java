@@ -1,3 +1,9 @@
+/*
+ * Master class to run djikstras algorithm on lists of cities
+ * takes in two command line args, edges and city locations
+ * 
+ */
+
 import java.awt.*;
 
 import javax.swing.*;
